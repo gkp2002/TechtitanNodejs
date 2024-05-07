@@ -9,6 +9,9 @@ require('dotenv').config();
 app.use(cors())
 app.use(express.json());
 let user;
+app.get('/',(req,res)=>{
+    res.send("Server Runing SucessFul");
+})
 app.post('/auth', async (req,res)=>{
     console.log(req.body);
   user=req.body.Username;
@@ -35,7 +38,7 @@ app.get('/dashboard',async (req,res)=>{
 
 app.post('/Create',async (req,res)=>{
     console.log(req.body);
-    let data = await new  Product(req.body);
+    let data =  new  Product(req.body);
     let result =await data.save();
     res.send(result);
 })
